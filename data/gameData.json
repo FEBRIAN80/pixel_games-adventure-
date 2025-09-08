@@ -1,0 +1,285 @@
+{
+  "version": "1.0.0",
+  "gameTitle": "Pixel Quest RPG",
+  "startingStats": {
+    "level": 1,
+    "hp": 100,
+    "maxHp": 100,
+    "mp": 50,
+    "maxMp": 50,
+    "xp": 0,
+    "xpToNext": 100,
+    "strength": 10,
+    "dexterity": 10,
+    "intelligence": 10,
+    "defense": 5
+  },
+  "enemies": {
+    "goblin": {
+      "name": "Goblin Warrior",
+      "hp": 30,
+      "damage": 8,
+      "speed": 80,
+      "xpReward": 15,
+      "goldReward": 5,
+      "lootTable": [
+        { "item": "copper-sword", "chance": 0.1 },
+        { "item": "health-potion", "chance": 0.3 },
+        { "item": "gold", "chance": 1.0, "amount": [3, 8] }
+      ]
+    },
+    "wolf": {
+      "name": "Gray Wolf",
+      "hp": 45,
+      "damage": 12,
+      "speed": 120,
+      "xpReward": 25,
+      "goldReward": 8,
+      "lootTable": [
+        { "item": "wolf-pelt", "chance": 0.6 },
+        { "item": "health-potion", "chance": 0.2 },
+        { "item": "gold", "chance": 1.0, "amount": [5, 12] }
+      ]
+    },
+    "skeleton": {
+      "name": "Ancient Skeleton",
+      "hp": 60,
+      "damage": 15,
+      "speed": 60,
+      "xpReward": 35,
+      "goldReward": 12,
+      "lootTable": [
+        { "item": "bone-sword", "chance": 0.15 },
+        { "item": "bone-armor", "chance": 0.08 },
+        { "item": "mana-potion", "chance": 0.25 },
+        { "item": "gold", "chance": 1.0, "amount": [8, 15] }
+      ]
+    }
+  },
+  "items": {
+    "weapons": {
+      "copper-sword": {
+        "name": "Copper Sword",
+        "type": "weapon",
+        "rarity": "common",
+        "damage": 18,
+        "attackSpeed": 1.0,
+        "durability": 100,
+        "sellPrice": 25
+      },
+      "bone-sword": {
+        "name": "Bone Sword",
+        "type": "weapon",
+        "rarity": "uncommon",
+        "damage": 22,
+        "attackSpeed": 1.1,
+        "durability": 120,
+        "sellPrice": 45
+      },
+      "steel-sword": {
+        "name": "Steel Sword",
+        "type": "weapon",
+        "rarity": "rare",
+        "damage": 28,
+        "attackSpeed": 1.15,
+        "durability": 150,
+        "sellPrice": 80
+      }
+    },
+    "armor": {
+      "leather-armor": {
+        "name": "Leather Armor",
+        "type": "armor",
+        "rarity": "common",
+        "defense": 8,
+        "durability": 80,
+        "sellPrice": 30
+      },
+      "bone-armor": {
+        "name": "Bone Armor",
+        "type": "armor",
+        "rarity": "uncommon",
+        "defense": 12,
+        "durability": 100,
+        "sellPrice": 55
+      }
+    },
+    "consumables": {
+      "health-potion": {
+        "name": "Health Potion",
+        "type": "consumable",
+        "rarity": "common",
+        "effect": "heal",
+        "value": 30,
+        "stackSize": 99,
+        "sellPrice": 5
+      },
+      "mana-potion": {
+        "name": "Mana Potion",
+        "type": "consumable",
+        "rarity": "common",
+        "effect": "mana",
+        "value": 20,
+        "stackSize": 99,
+        "sellPrice": 8
+      },
+      "greater-health-potion": {
+        "name": "Greater Health Potion",
+        "type": "consumable",
+        "rarity": "uncommon",
+        "effect": "heal",
+        "value": 60,
+        "stackSize": 50,
+        "sellPrice": 15
+      }
+    }
+  },
+  "zones": {
+    "forest": {
+      "name": "Enchanted Forest",
+      "description": "A mystical forest filled with ancient magic and dangerous creatures.",
+      "enemies": ["goblin", "wolf"],
+      "resources": ["herbs", "wood"],
+      "backgroundMusic": "forest-ambient"
+    },
+    "desert": {
+      "name": "Scorching Desert",
+      "description": "A vast desert with hidden treasures and deadly sandstorms.",
+      "enemies": ["scorpion", "bandit"],
+      "resources": ["cactus-fruit", "sand-crystal"],
+      "backgroundMusic": "desert-winds"
+    },
+    "dungeon": {
+      "name": "Ancient Dungeon",
+      "description": "Dark corridors filled with undead creatures and forgotten treasures.",
+      "enemies": ["skeleton", "ghost", "lich"],
+      "resources": ["ancient-runes", "soul-gems"],
+      "backgroundMusic": "dungeon-echoes"
+    }
+  },
+  "quests": {
+    "tutorial": [
+      {
+        "id": "first-steps",
+        "title": "First Steps",
+        "description": "Learn the basic controls and defeat your first enemy.",
+        "type": "tutorial",
+        "objectives": [
+          { "type": "move", "description": "Move around using WASD keys" },
+          { "type": "kill", "target": "any", "amount": 1, "description": "Defeat any enemy" }
+        ],
+        "rewards": {
+          "xp": 50,
+          "gold": 25,
+          "items": ["health-potion"]
+        }
+      }
+    ],
+    "main": [
+      {
+        "id": "goblin-threat",
+        "title": "Goblin Threat",
+        "description": "The local goblins have become increasingly aggressive. Thin their numbers.",
+        "type": "kill",
+        "objectives": [
+          { "type": "kill", "target": "goblin", "amount": 10, "description": "Defeat 10 goblins" }
+        ],
+        "rewards": {
+          "xp": 200,
+          "gold": 100,
+          "items": ["steel-sword", "leather-armor"]
+        }
+      },
+      {
+        "id": "wolf-pack",
+        "title": "Wolf Pack",
+        "description": "A pack of wolves threatens the trade routes. Deal with them.",
+        "type": "kill",
+        "objectives": [
+          { "type": "kill", "target": "wolf", "amount": 5, "description": "Defeat 5 wolves" }
+        ],
+        "rewards": {
+          "xp": 300,
+          "gold": 150,
+          "items": ["greater-health-potion"]
+        },
+        "prerequisites": ["goblin-threat"]
+      }
+    ]
+  },
+  "skills": {
+    "combat": {
+      "sword-mastery": {
+        "name": "Sword Mastery",
+        "description": "Increases damage when wielding swords",
+        "maxLevel": 10,
+        "effects": [
+          { "type": "damage-bonus", "value": 5, "per-level": true }
+        ]
+      },
+      "critical-strike": {
+        "name": "Critical Strike",
+        "description": "Increases critical hit chance and damage",
+        "maxLevel": 5,
+        "effects": [
+          { "type": "crit-chance", "value": 2, "per-level": true },
+          { "type": "crit-damage", "value": 10, "per-level": true }
+        ]
+      }
+    },
+    "defense": {
+      "armor-expertise": {
+        "name": "Armor Expertise",
+        "description": "Reduces damage taken while wearing armor",
+        "maxLevel": 8,
+        "effects": [
+          { "type": "damage-reduction", "value": 3, "per-level": true }
+        ]
+      },
+      "health-boost": {
+        "name": "Health Boost",
+        "description": "Increases maximum health",
+        "maxLevel": 10,
+        "effects": [
+          { "type": "max-hp", "value": 15, "per-level": true }
+        ]
+      }
+    },
+    "magic": {
+      "mana-efficiency": {
+        "name": "Mana Efficiency",
+        "description": "Reduces mana costs of abilities",
+        "maxLevel": 5,
+        "effects": [
+          { "type": "mana-cost-reduction", "value": 5, "per-level": true }
+        ]
+      },
+      "elemental-mastery": {
+        "name": "Elemental Mastery",
+        "description": "Increases elemental spell damage",
+        "maxLevel": 7,
+        "effects": [
+          { "type": "elemental-damage", "value": 8, "per-level": true }
+        ]
+      }
+    }
+  },
+  "audio": {
+    "music": {
+      "forest-ambient": "/audio/music/forest.ogg",
+      "desert-winds": "/audio/music/desert.ogg",
+      "dungeon-echoes": "/audio/music/dungeon.ogg",
+      "boss-battle": "/audio/music/boss.ogg"
+    },
+    "effects": {
+      "sword-swing": "/audio/sfx/sword-swing.wav",
+      "arrow-shoot": "/audio/sfx/arrow-shoot.wav",
+      "magic-cast": "/audio/sfx/magic-cast.wav",
+      "enemy-hit": "/audio/sfx/enemy-hit.wav",
+      "player-hurt": "/audio/sfx/player-hurt.wav",
+      "level-up": "/audio/sfx/level-up.wav",
+      "quest-complete": "/audio/sfx/quest-complete.wav",
+      "item-pickup": "/audio/sfx/item-pickup.wav"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Quest RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- UI Overlays -->
+        <div id="ui-overlay">
+            <!-- Health/Mana Bars -->
+            <div id="status-bars">
+                <div class="stat-bar">
+                    <div class="stat-label">HP</div>
+                    <div class="stat-bar-bg">
+                        <div id="health-bar" class="stat-bar-fill health"></div>
+                    </div>
+                    <div id="health-text" class="stat-text">100/100</div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-label">MP</div>
+                    <div class="stat-bar-bg">
+                        <div id="mana-bar" class="stat-bar-fill mana"></div>
+                    </div>
+                    <div id="mana-text" class="stat-text">50/50</div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-label">XP</div>
+                    <div class="stat-bar-bg">
+                        <div id="xp-bar" class="stat-bar-fill xp"></div>
+                    </div>
+                    <div id="level-text" class="stat-text">Lv.1</div>
+                </div>
+            </div>
+
+            <!-- Hotbar -->
+            <div id="hotbar">
+                <div class="hotbar-slot active" data-slot="0">
+                    <div class="hotkey">1</div>
+                    <div class="slot-content"></div>
+                </div>
+                <div class="hotbar-slot" data-slot="1">
+                    <div class="hotkey">2</div>
+                    <div class="slot-content"></div>
+                </div>
+                <div class="hotbar-slot" data-slot="2">
+                    <div class="hotkey">3</div>
+                    <div class="slot-content"></div>
+                </div>
+                <div class="hotbar-slot" data-slot="3">
+                    <div class="hotkey">Q</div>
+                    <div class="slot-content"></div>
+                </div>
+                <div class="hotbar-slot" data-slot="4">
+                    <div class="hotkey">E</div>
+                    <div class="slot-content"></div>
+                </div>
+                <div class="hotbar-slot" data-slot="5">
+                    <div class="hotkey">R</div>
+                    <div class="slot-content"></div>
+                </div>
+            </div>
+
+            <!-- Inventory Panel -->
+            <div id="inventory-panel" class="panel hidden">
+                <div class="panel-header">
+                    <h3>Inventory</h3>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="panel-content">
+                    <div id="inventory-grid"></div>
+                </div>
+            </div>
+
+            <!-- Character Panel -->
+            <div id="character-panel" class="panel hidden">
+                <div class="panel-header">
+                    <h3>Character</h3>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="panel-content">
+                    <div class="character-display">
+                        <div class="equipment-slots">
+                            <div class="eq-slot" data-type="helmet"></div>
+                            <div class="eq-slot" data-type="weapon"></div>
+                            <div class="eq-slot" data-type="armor"></div>
+                            <div class="eq-slot" data-type="boots"></div>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat-row">
+                                <span>Level:</span>
+                                <span id="char-level">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Strength:</span>
+                                <span id="char-str">10</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Dexterity:</span>
+                                <span id="char-dex">10</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Intelligence:</span>
+                                <span id="char-int">10</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Defense:</span>
+                                <span id="char-def">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quest Panel -->
+            <div id="quest-panel" class="panel hidden">
+                <div class="panel-header">
+                    <h3>Quests</h3>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="panel-content">
+                    <div id="quest-list"></div>
+                </div>
+            </div>
+
+            <!-- Controls Help -->
+            <div id="controls-info">
+                <div class="control-tip">WASD: Move</div>
+                <div class="control-tip">I: Inventory</div>
+                <div class="control-tip">C: Character</div>
+                <div class="control-tip">Space: Attack</div>
+                <div class="control-tip">Shift: Run</div>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loading-content">
+                <h1>Pixel Quest RPG</h1>
+                <div class="loading-bar">
+                    <div id="loading-progress"></div>
+                </div>
+                <p>Loading adventures...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+</html>
